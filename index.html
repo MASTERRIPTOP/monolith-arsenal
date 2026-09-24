@@ -5,8 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MONOLITH: ARSENAL — Система, которая не прощает ошибок</title>
 <meta name="description" content="Военно-тактический Minecraft-сервер. Танки, авиация, РЭБ, Black Ops, War Tycoon. Java + Bedrock.">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://masterriptop.github.io/monolith-arsenal/">
+<meta property="og:title" content="MONOLITH: ARSENAL — Система, которая не прощает ошибок">
+<meta property="og:description" content="Военно-тактический Minecraft-сервер. Танки, авиация, РЭБ, Black Ops, War Tycoon. Java + Bedrock.">
+<meta property="og:image" content="https://masterriptop.github.io/monolith-arsenal/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MONOLITH: ARSENAL — Система, которая не прощает ошибок">
+<meta name="twitter:description" content="Военно-тактический Minecraft-сервер. Танки, авиация, РЭБ, Black Ops, War Tycoon.">
+<meta name="twitter:image" content="https://masterriptop.github.io/monolith-arsenal/preview.png">
+
+<link rel="icon" type="image/png" href="/monolith-arsenal/favicon.png">
+<link rel="apple-touch-icon" href="/monolith-arsenal/apple-touch-icon.png">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -175,6 +192,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .toast.show { transform: translateX(-50%) translateY(0); }
 .title-level { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin: 32px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-weight: 700; }
 .title-level:first-of-type { margin-top: 0; }
+.dead-link { cursor: not-allowed; opacity: 0.5; }
 </style>
 </head>
 <body>
@@ -200,7 +218,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <li><a href="#team">Команда</a></li>
     <li><a href="#rules">Устав</a></li>
     <li><a href="#donate">Донат</a></li>
-    <li><a href="https://t.me/MONOLITH_ARSENAL_bot" class="nav-cta" target="_blank">Заявка</a></li>
+    <li><a href="https://t.me/MONOLITH_ARSENAL_bot" class="nav-cta" target="_blank" rel="noopener">Заявка</a></li>
   </ul>
 </nav>
 
@@ -210,8 +228,8 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <h1>MONOLITH<span class="accent">:</span>ARSENAL</h1>
     <div class="slogan">Система, которая не прощает ошибок</div>
     <div class="hero-buttons">
-      <a href="https://t.me/MONOLITH_ARSENAL_bot" class="btn btn-primary" target="_blank">📝 Подать заявку</a>
-      <a href="https://t.me/MONOLITH_ARSENAL" class="btn" target="_blank">📢 Telegram-канал</a>
+      <a href="https://t.me/MONOLITH_ARSENAL_bot" class="btn btn-primary" target="_blank" rel="noopener">📝 Подать заявку</a>
+      <a href="https://t.me/MONOLITH_ARSENAL" class="btn" target="_blank" rel="noopener">📢 Telegram-канал</a>
       <a href="#rules" class="btn">📜 Устав системы</a>
     </div>
   </div>
@@ -249,15 +267,15 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <h2>Арсенал <span class="accent">системы</span></h2>
     <p class="section-desc">Полный набор техники для всех наций: танки, авиация, вертолёты, артиллерия, ПВО и РЭБ.</p>
     <div class="tabs">
-      <button class="tab active" data-tab="de">🇩🇪 Германия</button>
-      <button class="tab" data-tab="ru">🇷🇺 Россия / СССР</button>
-      <button class="tab" data-tab="us">🇺🇸 США</button>
-      <button class="tab" data-tab="gb">🇬🇧 Британия</button>
-      <button class="tab" data-tab="fr">🇫🇷 Франция</button>
-      <button class="tab" data-tab="cn">🇨🇳 Китай</button>
-      <button class="tab" data-tab="il">🇮🇱 Израиль</button>
-      <button class="tab" data-tab="jp">🇯🇵 Япония</button>
-      <button class="tab" data-tab="ua">🇺🇦 Украина</button>
+      <button class="tab active" data-target="tab-de">🇩🇪 Германия</button>
+      <button class="tab" data-target="tab-ru">🇷🇺 Россия / СССР</button>
+      <button class="tab" data-target="tab-us">🇺🇸 США</button>
+      <button class="tab" data-target="tab-gb">🇬🇧 Британия</button>
+      <button class="tab" data-target="tab-fr">🇫🇷 Франция</button>
+      <button class="tab" data-target="tab-cn">🇨🇳 Китай</button>
+      <button class="tab" data-target="tab-il">🇮🇱 Израиль</button>
+      <button class="tab" data-target="tab-jp">🇯🇵 Япония</button>
+      <button class="tab" data-target="tab-ua">🇺🇦 Украина</button>
     </div>
 
     <div class="tab-content active" id="tab-de">
@@ -621,21 +639,22 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 
   </div>
 </section>
+
 <section id="weapons">
   <div class="container">
     <div class="section-label">// Стрелковое оружие</div>
     <h2>Арсенал <span class="accent">оружия</span></h2>
     <p class="section-desc">140+ единиц стрелкового вооружения от ВОВ до современности. Пистолеты, ПП, автоматы, пулемёты, снайперские, дробовики, тяжёлое.</p>
     <div class="tabs">
-      <button class="tab active" data-tab="w-de">🇩🇪 Германия</button>
-      <button class="tab" data-tab="w-ru">🇷🇺 Россия / СССР</button>
-      <button class="tab" data-tab="w-us">🇺🇸 США</button>
-      <button class="tab" data-tab="w-gb">🇬🇧 Британия</button>
-      <button class="tab" data-tab="w-fr">🇫🇷 Франция</button>
-      <button class="tab" data-tab="w-cn">🇨🇳 Китай</button>
-      <button class="tab" data-tab="w-il">🇮🇱 Израиль</button>
-      <button class="tab" data-tab="w-jp">🇯🇵 Япония</button>
-      <button class="tab" data-tab="w-ua">🇺🇦 Украина</button>
+      <button class="tab active" data-target="tab-w-de">🇩🇪 Германия</button>
+      <button class="tab" data-target="tab-w-ru">🇷🇺 Россия / СССР</button>
+      <button class="tab" data-target="tab-w-us">🇺🇸 США</button>
+      <button class="tab" data-target="tab-w-gb">🇬🇧 Британия</button>
+      <button class="tab" data-target="tab-w-fr">🇫🇷 Франция</button>
+      <button class="tab" data-target="tab-w-cn">🇨🇳 Китай</button>
+      <button class="tab" data-target="tab-w-il">🇮🇱 Израиль</button>
+      <button class="tab" data-target="tab-w-jp">🇯🇵 Япония</button>
+      <button class="tab" data-target="tab-w-ua">🇺🇦 Украина</button>
     </div>
 
     <div class="tab-content active" id="tab-w-de">
@@ -888,6 +907,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 
   </div>
 </section>
+
 <section id="armor">
   <div class="container">
     <div class="section-label">// Сводная таблица брони</div>
@@ -952,8 +972,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
           <tr><td class="num">16</td><td>Полевой командир</td><td>+45</td><td>+15% радиус команд (20 блоков)</td><td>Тяжёлый</td><td class="blue">Крафт + 1000 изумрудов</td></tr>
           <tr><td class="num">17</td><td>Оружейник</td><td>+36</td><td>+30% скорость перезарядки</td><td>Тяжёлый</td><td class="prem">5 000 ₽</td></tr>
           <tr><td class="num">18</td><td>Ассасин</td><td>+30</td><td>Невидимость 20 сек, тихие шаги</td><td>Средний</td><td class="prem">7 000 ₽</td></tr>
-          <tr><td class="num">19</td><td>Командирский</td><td>+54</td><td>+30% радиус команд, маркеры на карте</td><td>Тяжёлый</td><td class="prem">12 000 ₽</td></tr>
-          <tr><td class="num">20</td><td>Легендарный</td><td>+54</td><td>Все эффекты базовых + невидимость 30 сек</td><td>Тяжёлый</td><td class="prem">20 000 ₽</td></tr>
+          <tr><td class="num">19</td><td>Командирский</td><td>+54</td><td>+30% радиус команд, маркеры на карте</td><td>Тяжёлый</td><td class="prem">12 000 ₽</td></tr>          <tr><td class="num">20</td><td>Легендарный</td><td>+54</td><td>Все эффекты базовых + невидимость 30 сек</td><td>Тяжёлый</td><td class="prem">20 000 ₽</td></tr>
         </tbody>
       </table>
     </div>
@@ -984,6 +1003,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     </div>
   </div>
 </section>
+
 <section id="animations">
   <div class="container">
     <div class="section-label">// Анимации</div>
@@ -1188,6 +1208,45 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     </div>
   </div>
 </section>
+
+<!-- ДОНАТ: вынесен в отдельную секцию + id="donate" -->
+<section id="donate">
+  <div class="container">
+    <div class="section-label">// Поддержка проекта</div>
+    <h2>Поддержать <span class="accent">МОНОЛИТ</span></h2>
+    <p class="section-desc">Донат — добровольный вклад в развитие сервера. Не даёт права нарушать Устав и не отменяет наказаний.</p>
+    <div class="donate-box">
+      <div class="qr-box">
+        <img src="/monolith-arsenal/qr.png" alt="QR-код для доната по СБП" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'qr-placeholder\'>QR-код<br>скоро</div>';">
+      </div>
+      <div class="donate-info">
+        <h3>Перевод по СБП</h3>
+        <p>Телефон получателя — Максим С. Перевод занимает секунды.</p>
+        <div class="donate-detail" onclick="copyText('+79336865702', this)">
+          <span class="k">СБП:</span>
+          <span>+7 933 686-57-02</span>
+          <span class="copy-btn">Копировать</span>
+        </div>
+        <div class="donate-detail" onclick="copyText('Максим С.', this)">
+          <span class="k">Получатель:</span>
+          <span>Максим С.</span>
+          <span class="copy-btn">Копировать</span>
+        </div>
+        <div class="levels">
+          <div class="level"><b>500 ₽</b>Рекрут+</div>
+          <div class="level"><b>1 000 ₽</b>Солдат</div>
+          <div class="level"><b>5 000 ₽</b>Капитан-Премиум</div>
+          <div class="level"><b>12 000 ₽</b>Майор-Премиум</div>
+          <div class="level"><b>25 000 ₽</b>Полковник-Премиум</div>
+        </div>
+        <div class="donate-note">
+          После перевода — пришли чек в <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank" rel="noopener">@MONOLITH_ARSENAL_bot</a>. Без чека привилегии не выдаются. Возврат доната не предусмотрен (раздел 14 Устава).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="titles">
   <div class="container">
     <div class="section-label">// Титулы и звания</div>
@@ -1311,6 +1370,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     </div>
   </div>
 </section>
+
 <section id="progress">
   <div class="container">
     <div class="section-label">// Разработка мода</div>
@@ -1363,9 +1423,9 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <h2>FAQ <span class="accent">системы</span></h2>
     <p class="section-desc">Ответы на самые частые вопросы. Если не нашёл свой — пиши в канал.</p>
     <div class="faq">
-      <details class="faq-item"><summary>Когда откроется сервер?</summary><div class="faq-body">Точная дата пока не объявлена. Идёт активная разработка мода и подготовка инфраструктуры. Следи за <a href="https://t.me/MONOLITH_ARSENAL" target="_blank">Telegram-каналом</a> — там будет анонс за несколько дней до старта.</div></details>
+      <details class="faq-item"><summary>Когда откроется сервер?</summary><div class="faq-body">Точная дата пока не объявлена. Идёт активная разработка мода и подготовка инфраструктуры. Следи за <a href="https://t.me/MONOLITH_ARSENAL" target="_blank" rel="noopener">Telegram-каналом</a> — там будет анонс за несколько дней до старта.</div></details>
       <details class="faq-item"><summary>Какая версия Minecraft?</summary><div class="faq-body">Версия 1.21.11, ядро — Fabric или NeoForge (будет объявлено перед запуском). Поддерживаются как Java, так и Bedrock.</div></details>
-      <details class="faq-item"><summary>Как получить вайтлист?</summary><div class="faq-body">Подай заявку через <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank">@MONOLITH_ARSENAL_bot</a>. Заполни 4 шага: ник, платформа, возраст, опыт. Администрация рассмотрит и одобрит или отклонит заявку.</div></details>
+      <details class="faq-item"><summary>Как получить вайтлист?</summary><div class="faq-body">Подай заявку через <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank" rel="noopener">@MONOLITH_ARSENAL_bot</a>. Заполни 4 шага: ник, платформа, возраст, опыт. Администрация рассмотрит и одобрит или отклонит заявку.</div></details>
       <details class="faq-item"><summary>Сколько стоит играть?</summary><div class="faq-body">Играть — бесплатно. Есть внутренний донат (премиум-броня, рюкзаки, техника), но он не даёт преимущества над обычными игроками и не отменяет правил Устава.</div></details>
       <details class="faq-item"><summary>Как получить звание?</summary><div class="faq-body">До капитана — автоматически за дни на сервере, изумруды и PvP-победы. Майор и выше — заявка и одобрение администрации. Премиум-звания — после покупки. Маршал и Генералиссимус — только назначение. Полная таблица — в разделе «Титулы».</div></details>
       <details class="faq-item"><summary>Будет ли мод на Bedrock?</summary><div class="faq-body">Да. Планируется отдельный аддон для Bedrock с использованием Script API. Функционал будет чуть уже, чем на Java, но основной арсенал сохранится.</div></details>
@@ -1418,11 +1478,12 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
         <div class="team-name">Свободно</div>
         <div class="team-role">Тех. специалист</div>
         <div class="team-desc">Сервер, хостинг, инфраструктура.</div>
-        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ЕДИНАЯ СЕКЦИЯ УСТАВА: Правило №1 + все разделы 0-16 -->
 <section id="rules">
   <div class="container">
     <div class="section-label">// Устав системы</div>
@@ -1693,19 +1754,19 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     </div>
     <div class="foot-col">
       <h4>Связь</h4>
-      <a href="https://t.me/MONOLITH_ARSENAL" target="_blank">📢 Telegram-канал</a>
-      <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank">🤖 Заявка в боте</a>
-      <a href="https://youtube.com/@monolitharsenal" target="_blank">📺 YouTube</a>
-      <a href="https://vk.ru/monolit_arsenal" target="_blank">🎬 VK</a>
-      <a href="https://vkvideo.ru/@monolit_arsenal" target="_blank">📹 VK Видео</a>
-      <a href="https://www.tiktok.com/@monolith_arsenal" target="_blank">🎵 TikTok</a>
-      <a href="https://l.likee.video/p/kefesO" target="_blank">📷 Likee</a>
-      <a href="https://matrix.to/#/#monolith-arsenal:matrix.org" target="_blank">🔗 Matrix</a>
-      <a href="#">💬 Discord — скоро</a>
+      <a href="https://t.me/MONOLITH_ARSENAL" target="_blank" rel="noopener">📢 Telegram-канал</a>
+      <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank" rel="noopener">🤖 Заявка в боте</a>
+      <a href="https://youtube.com/@monolitharsenal" target="_blank" rel="noopener">📺 YouTube</a>
+      <a href="https://vk.ru/monolit_arsenal" target="_blank" rel="noopener">🎬 VK</a>
+      <a href="https://vkvideo.ru/@monolit_arsenal" target="_blank" rel="noopener">📹 VK Видео</a>
+      <a href="https://www.tiktok.com/@monolith_arsenal" target="_blank" rel="noopener">🎵 TikTok</a>
+      <a href="https://l.likee.video/p/kefesO" target="_blank" rel="noopener">📷 Likee</a>
+      <a href="https://matrix.to/#/#monolith-arsenal:matrix.org" target="_blank" rel="noopener">🔗 Matrix</a>
+      <span class="foot-col a dead-link">💬 Discord — скоро</span>
     </div>
     <div class="foot-col">
       <h4>Сервер</h4>
-      <a href="#">IP: скоро</a>
+      <span class="dead-link" style="display:block; color:var(--dim); font-size:13px; padding:4px 0;">IP: скоро</span>
       <a href="#rules">📜 Устав системы</a>
       <a href="#donate">💰 Поддержать</a>
     </div>
@@ -1715,26 +1776,30 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 
 <div class="toast" id="toast">Скопировано</div>
 <script>
-// Переключение табов
+// Переключение табов — через data-target, работает в любом контейнере
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    const target = tab.dataset.tab;
-    const parent = tab.parentElement;
-    parent.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    const targetId = tab.dataset.target;
+    if (!targetId) return;
+    const container = tab.closest('.container');
+    if (!container) return;
+    const tabsWrap = tab.parentElement;
+
+    // Сброс активных табов
+    tabsWrap.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const allContent = parent.parentElement.querySelectorAll('.tab-content');
-    allContent.forEach(c => c.classList.remove('active'));
-    const targetContent = parent.parentElement.querySelector('#tab-' + target);
+
+    // Сброс и показ контента
+    container.querySelectorAll(':scope > .tab-content').forEach(c => c.classList.remove('active'));
+    const targetContent = container.querySelector('#' + targetId);
     if (targetContent) targetContent.classList.add('active');
   });
 });
 
 // Копирование текста (номер СБП)
-function copyText(text, el) {
+function copyText(text) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast();
-    }).catch(() => fallbackCopy(text));
+    navigator.clipboard.writeText(text).then(showToast).catch(() => fallbackCopy(text));
   } else {
     fallbackCopy(text);
   }
