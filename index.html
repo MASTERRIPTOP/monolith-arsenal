@@ -54,17 +54,7 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-i
   background-size: 40px 40px; }
 [data-theme="light"] body::before { background-image: linear-gradient(rgba(227,6,19,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(227,6,19,0.05) 1px, transparent 1px); }
 
-/* === BOT OFFLINE BANNER === */
-.bot-notice { position: fixed; top: 0; left: 0; right: 0; z-index: 101; background: linear-gradient(90deg, rgba(227,6,19,0.95), rgba(180,5,15,0.95)); color: #fff; padding: 8px 44px 8px 16px; font-size: 11px; letter-spacing: 0.5px; text-align: center; font-weight: 600; transform: translateY(0); transition: transform 0.3s; }
-.bot-notice.hide { transform: translateY(-100%); }
-.bot-notice b { color: #ffd700; }
-.bot-notice a { color: #fff; text-decoration: underline; font-weight: 700; }
-.bot-notice-close { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: #fff; font-size: 18px; cursor: pointer; padding: 4px 8px; line-height: 1; font-family: inherit; }
-body.has-notice nav { top: 30px; }
-body.has-notice .menu { top: 91px; }
-body.has-notice .hero { padding-top: 130px; }
-
-/* === PRELOADER === */
+/* PRELOADER */
 .preloader { position: fixed; inset: 0; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; transition: opacity 0.5s, visibility 0.5s; }
 .preloader.hide { opacity: 0; visibility: hidden; }
 .preloader-mark { width: 70px; height: 70px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 34px; color: #fff; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); box-shadow: 0 0 40px var(--glow); animation: preloaderPulse 1.5s ease-in-out infinite; }
@@ -73,33 +63,25 @@ body.has-notice .hero { padding-top: 130px; }
 .preloader-bar { width: 200px; height: 2px; background: var(--border); overflow: hidden; }
 .preloader-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.2s; }
 
-/* === SCROLL REVEAL === */
+/* SCROLL REVEAL */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.revealed { opacity: 1; transform: none; }
 
-/* === CUSTOM CURSOR === */
-@media (hover: hover) and (pointer: fine) {
-  body.custom-cursor, body.custom-cursor * { cursor: none !important; }
-  .cursor { position: fixed; width: 28px; height: 28px; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); transition: transform 0.1s ease, opacity 0.2s; mix-blend-mode: difference; }
-  .cursor::before, .cursor::after { content: ''; position: absolute; background: var(--accent); }
-  .cursor::before { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
-  .cursor::after { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
-  .cursor.hover { transform: translate(-50%, -50%) scale(1.6); }
-}
-@media (hover: none) { .cursor { display: none !important; } }
-
-/* === SCANLINE === */
+/* SCANLINE */
 body::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 2;
   background: repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
   opacity: 0.5; mix-blend-mode: multiply; }
 [data-theme="light"] body::after { display: none; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 95%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; transition: top 0.3s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 95%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: 1.5px; font-size: 14px; text-decoration: none; color: var(--text); }
 .logo-mark { width: 32px; height: 32px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; color: #fff; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); box-shadow: 0 0 15px var(--glow); flex-shrink: 0; }
 .logo-text span { color: var(--accent); }
 .nav-tools { display: flex; align-items: center; gap: 6px; }
+.nav-clock { font-family: monospace; font-size: 11px; letter-spacing: 1px; color: var(--dim); padding: 6px 10px; border: 1px solid var(--border); background: var(--bg-2); display: none; white-space: nowrap; }
+.nav-clock b { color: var(--accent); font-weight: 700; }
+@media (min-width: 768px) { .nav-clock { display: inline-block; } }
 .icon-btn { background: transparent; border: 1px solid var(--border); color: var(--text); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 15px; transition: all 0.2s; flex-shrink: 0; position: relative; }
 .icon-btn:active { background: var(--bg-3); color: var(--accent); }
 .burger { display: flex; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 8px; }
@@ -107,7 +89,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: colo
 .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .burger.active span:nth-child(2) { opacity: 0; }
 .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-.menu { position: fixed; top: 61px; left: 0; right: 0; background: var(--bg-2); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.3s ease, top 0.3s; z-index: 99; }
+.menu { position: fixed; top: 61px; left: 0; right: 0; background: var(--bg-2); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; z-index: 99; }
 .menu.open { max-height: 80vh; overflow-y: auto; }
 .menu ul { list-style: none; padding: 8px 0; }
 .menu a { display: block; padding: 14px 20px; color: var(--text); text-decoration: none; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; border-bottom: 1px solid var(--border); }
@@ -115,22 +97,37 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: colo
 .menu .cta { background: var(--accent); color: #fff; text-align: center; margin: 8px 16px; border: none; }
 
 /* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px 60px; text-align: center; position: relative; z-index: 1; transition: padding 0.3s; }
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px 60px; text-align: center; position: relative; z-index: 1; }
 .hero-badge { display: inline-block; padding: 5px 14px; border: 1px solid var(--accent); color: var(--accent); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; background: rgba(227,6,19,0.05); }
 h1 { font-size: clamp(32px, 10vw, 80px); font-weight: 900; letter-spacing: 2px; line-height: 1; margin-bottom: 16px; text-transform: uppercase; }
 h1 .accent { color: var(--accent); text-shadow: 0 0 30px var(--glow); }
 .slogan { font-size: clamp(10px, 3vw, 14px); letter-spacing: 3px; color: var(--dim); text-transform: uppercase; margin-bottom: 24px; }
-.online-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--bg-2); border: 1px solid var(--border); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 28px; color: var(--dim); }
-.online-dot { width: 8px; height: 8px; background: var(--dim); border-radius: 50%; animation: pulse 2s infinite; }
-.online-dot.on { background: var(--green); box-shadow: 0 0 10px var(--green); }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 .hero-buttons { display: flex; flex-direction: column; gap: 10px; max-width: 320px; margin: 0 auto; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 1px solid var(--border); color: var(--text); transition: all 0.2s; cursor: pointer; background: transparent; font-family: inherit; }
 .btn:active { transform: scale(0.97); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn-primary:active { background: var(--accent-2); }
-.btn-soon { opacity: 0.65; cursor: not-allowed; position: relative; }
-.btn-soon::after { content: 'СКОРО'; position: absolute; top: -6px; right: -6px; background: var(--gold); color: #000; font-size: 8px; padding: 2px 5px; letter-spacing: 1px; font-weight: 900; }
+
+/* SERVER STATUS */
+.server-status-box { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--border); padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; transition: border-color 0.3s; }
+.server-status-box.online { border-color: var(--green); box-shadow: 0 0 30px rgba(74,222,128,0.15); }
+.server-status-box.dev { border-color: var(--gold); }
+.server-status-left { display: flex; align-items: center; gap: 14px; }
+.server-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: pulse 2s infinite; flex-shrink: 0; }
+.server-dot.online { background: var(--green); box-shadow: 0 0 12px var(--green); }
+.server-status-title { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; }
+.server-status-sub { font-size: 11px; color: var(--dim); margin-top: 3px; }
+.server-status-right { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.server-status-item { display: flex; flex-direction: column; gap: 3px; }
+.server-status-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); }
+.server-status-value { font-family: monospace; font-size: 14px; font-weight: 700; color: var(--text); }
+.server-status-value.online { color: var(--green); }
+.server-status-btn { display: inline-block; padding: 8px 14px; background: var(--accent); color: #fff; text-decoration: none; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; margin-left: auto; }
+.server-status-btn:active { background: var(--accent-2); }
+@media (min-width: 768px) {
+  .server-status-box { flex-direction: row; align-items: center; justify-content: space-between; padding: 20px 32px; }
+  .server-status-right { gap: 28px; }
+}
 
 /* SECTIONS */
 section { padding: 60px 20px; position: relative; z-index: 1; }
@@ -140,7 +137,6 @@ h2 { font-size: clamp(22px, 6vw, 40px); font-weight: 900; letter-spacing: 1.5px;
 h2 .accent { color: var(--accent); }
 .section-desc { color: var(--dim); max-width: 700px; margin-bottom: 32px; font-size: 14px; }
 
-/* MODES / STEPS */
 .modes { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .mode-card { background: var(--bg-2); border: 1px solid var(--border); padding: 22px 20px; transition: all 0.2s; }
 .mode-card:active { transform: scale(0.98); border-color: var(--accent); }
@@ -153,7 +149,6 @@ h2 .accent { color: var(--accent); }
 .step-title { font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
 .step-text { color: var(--dim); font-size: 13px; }
 
-/* TABS */
 .tabs { display: flex; gap: 6px; margin-bottom: 20px; overflow-x: auto; border-bottom: 1px solid var(--border); scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
 .tab { padding: 10px 14px; background: transparent; border: none; color: var(--dim); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; font-family: inherit; white-space: nowrap; }
@@ -162,7 +157,6 @@ h2 .accent { color: var(--accent); }
 .tab-content.active { display: block; animation: fade 0.3s; }
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-/* VGRID */
 .vgrid { display: grid; grid-template-columns: 1fr; gap: 10px; }
 .vcard { background: var(--bg-2); border: 1px solid var(--border); padding: 14px 16px; }
 .vcard-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
@@ -171,7 +165,6 @@ h2 .accent { color: var(--accent); }
 .vcat-title { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin: 20px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 .vcat-title:first-child { margin-top: 0; }
 
-/* ACCORDION */
 .accordion { background: var(--bg-2); border: 1px solid var(--border); margin-bottom: 10px; }
 .accordion summary { padding: 16px 20px; cursor: pointer; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none; }
 .accordion summary::-webkit-details-marker { display: none; }
@@ -182,13 +175,11 @@ h2 .accent { color: var(--accent); }
 .accordion-body p { margin-bottom: 10px; }
 .accordion-body strong { color: var(--accent-2); }
 
-/* TABLES */
 .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .tbl { width: 100%; border-collapse: collapse; background: var(--bg-2); border: 1px solid var(--border); min-width: 520px; }
 .tbl th { text-align: left; padding: 10px 12px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); font-weight: 700; background: var(--bg-3); border-bottom: 1px solid var(--border); }
 .tbl td { padding: 10px 12px; font-size: 12px; border-bottom: 1px solid var(--border); }
 .tbl tr:last-child td { border-bottom: none; }
-.tbl .num { font-family: monospace; color: var(--accent); font-weight: 700; }
 .tbl .gold { color: var(--gold); font-weight: 700; }
 .tbl .green { color: var(--green); font-weight: 700; }
 .tbl .blue { color: var(--blue); font-weight: 700; }
@@ -196,13 +187,11 @@ h2 .accent { color: var(--accent); }
 .tbl .prem { color: var(--gold); font-size: 11px; }
 .tbl .secret { color: var(--accent-2); font-size: 11px; }
 
-/* ANIM */
 .anim-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .anim { background: var(--bg-2); border: 1px solid var(--border); padding: 10px 14px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .anim-name { font-weight: 600; }
 .anim-cmd { font-family: monospace; font-size: 10px; color: var(--accent); background: rgba(227,6,19,0.08); padding: 2px 6px; border: 1px solid rgba(227,6,19,0.3); white-space: nowrap; }
 
-/* PREMIUM */
 .prem-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .prem-card { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--gold); padding: 18px; }
 .prem-card.secret { border-color: var(--accent); }
@@ -211,7 +200,6 @@ h2 .accent { color: var(--accent); }
 .prem-type { font-size: 10px; letter-spacing: 1.5px; color: var(--dim); text-transform: uppercase; margin-bottom: 8px; }
 .prem-desc { font-size: 12px; }
 
-/* FAQ */
 .faq-item { background: var(--bg-2); border: 1px solid var(--border); margin-bottom: 8px; }
 .faq-item summary { padding: 14px 18px; cursor: pointer; font-size: 13px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
 .faq-item summary::-webkit-details-marker { display: none; }
@@ -220,7 +208,6 @@ h2 .accent { color: var(--accent); }
 .faq-item[open] summary { color: var(--accent); border-bottom: 1px solid var(--border); }
 .faq-body { padding: 14px 18px 18px; font-size: 13px; color: var(--dim); }
 
-/* PROGRESS */
 .progress-item { background: var(--bg-2); border: 1px solid var(--border); padding: 14px 18px; margin-bottom: 10px; }
 .progress-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; gap: 10px; }
 .progress-head .status { font-size: 10px; padding: 2px 8px; border: 1px solid var(--border); color: var(--dim); white-space: nowrap; }
@@ -229,7 +216,6 @@ h2 .accent { color: var(--accent); }
 .progress-bar { height: 6px; background: var(--bg-3); border: 1px solid var(--border); overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
 
-/* TEAM */
 .team-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .team-card { background: var(--bg-2); border: 1px solid var(--border); padding: 22px 20px; text-align: center; }
 .team-avatar { width: 60px; height: 60px; margin: 0 auto 12px; background: var(--bg-3); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; color: var(--accent); }
@@ -237,7 +223,6 @@ h2 .accent { color: var(--accent); }
 .team-role { font-size: 11px; letter-spacing: 1.5px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
 .team-desc { font-size: 12px; color: var(--dim); }
 
-/* DONATE */
 .donate-box { background: var(--bg-2); border: 1px solid var(--border); padding: 24px 20px; }
 .qr-box { width: 200px; height: 200px; background: #fff; padding: 10px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
 .qr-box img { width: 100%; height: 100%; object-fit: contain; }
@@ -251,34 +236,29 @@ h2 .accent { color: var(--accent); }
 .donate-note { margin-top: 16px; padding: 12px 14px; background: rgba(227,6,19,0.06); border-left: 3px solid var(--accent); font-size: 12px; }
 .donate-note a { color: var(--accent-2); text-decoration: none; font-weight: 700; }
 
-/* FOOTER */
 footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 40px 20px 24px; position: relative; z-index: 1; }
 .foot-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 28px; }
 .foot-col h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-.foot-col a { display: block; color: var(--dim); text-decoration: none; font-size: 13px; padding: 6px 0; background: transparent; border: none; text-align: left; cursor: pointer; font-family: inherit; width: 100%; }
+.foot-col a { display: block; color: var(--dim); text-decoration: none; font-size: 13px; padding: 6px 0; }
 .foot-col a:active { color: var(--accent-2); }
 .foot-col p { color: var(--dim); font-size: 12px; }
 .foot-bottom { max-width: 1200px; margin: 0 auto; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; color: var(--dim); font-size: 10px; letter-spacing: 2px; }
 .foot-bottom small { display: block; margin-top: 8px; letter-spacing: 1px; font-size: 9px; opacity: 0.7; line-height: 1.7; }
 .foot-bottom a { color: var(--accent); text-decoration: none; }
 
-/* TOAST */
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(150px); background: var(--accent); color: #fff; padding: 12px 24px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; z-index: 999; transition: transform 0.3s; max-width: 90vw; text-align: center; }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
-/* BACK TO TOP */
 .back-top { position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px; background: var(--accent); border: none; color: #fff; font-size: 20px; cursor: pointer; z-index: 90; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 20px var(--glow); }
 .back-top.show { opacity: 1; pointer-events: auto; }
 .back-top:active { transform: scale(0.9); }
 
-/* COOKIE */
 .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-2); border-top: 2px solid var(--accent); padding: 16px 20px; z-index: 150; display: flex; flex-direction: column; gap: 12px; transform: translateY(100%); transition: transform 0.3s; box-shadow: 0 -8px 30px rgba(0,0,0,0.5); }
 .cookie-banner.show { transform: translateY(0); }
 .cookie-banner p { font-size: 12px; color: var(--dim); }
 .cookie-banner a { color: var(--accent); text-decoration: none; }
 .cookie-banner .btn { align-self: flex-start; padding: 10px 20px; font-size: 11px; }
 
-/* CASES */
 .cases-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .case-card { background: var(--bg-2); border: 1px solid var(--border); padding: 20px; position: relative; overflow: hidden; transition: all 0.2s; }
 .case-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
@@ -299,7 +279,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .case-buttons .btn-open:active { background: var(--accent); color: #fff; }
 .case-buttons .btn-cart.in-cart { background: var(--green); }
 
-/* CAMO */
 .camo-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
 .camo-card { background: var(--bg-2); border: 1px solid var(--border); padding: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .camo-info { flex: 1; min-width: 0; }
@@ -309,7 +288,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .camo-card.animated { border-color: var(--purple); }
 .camo-card.animated .camo-name { color: var(--purple); }
 
-/* SEASONS */
 .seasons-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .season-card { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--border); padding: 22px 20px; }
 .season-card.active { border-color: var(--accent); }
@@ -320,7 +298,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .season-list b { color: var(--text); }
 .season-price { margin-top: 14px; font-family: monospace; font-size: 15px; color: var(--gold); font-weight: 700; }
 
-/* SHOP */
 .shop-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .shop-item { background: var(--bg-2); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
 .shop-name { font-size: 14px; font-weight: 700; }
@@ -331,7 +308,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .btn-cart:active { background: var(--accent-2); }
 .btn-cart.in-cart { background: var(--green); }
 
-/* CART */
 .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
 .cart-overlay.open { opacity: 1; pointer-events: auto; }
 .cart-sidebar { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100%); background: var(--bg-2); border-left: 1px solid var(--border); z-index: 301; transform: translateX(100%); transition: transform 0.3s; display: flex; flex-direction: column; }
@@ -360,7 +336,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .cart-hint { font-size: 11px; color: var(--dim); margin-top: 10px; line-height: 1.6; }
 .cart-hint a { color: var(--accent); text-decoration: none; font-weight: 700; }
 
-/* QUIZ */
 .quiz-wrap { background: var(--bg-2); border: 1px solid var(--border); padding: 24px 20px; }
 .quiz-q { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
 .quiz-q-num { font-size: 11px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
@@ -375,7 +350,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .quiz-progress { height: 4px; background: var(--bg-3); margin-bottom: 20px; }
 .quiz-progress-fill { height: 100%; background: var(--accent); transition: width 0.3s; }
 
-/* HALL OF FAME */
 .fame-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .fame-row { background: var(--bg-2); border: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
 .fame-rank { font-size: 18px; font-weight: 900; color: var(--accent); min-width: 32px; }
@@ -384,14 +358,12 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .fame-title { font-size: 11px; color: var(--dim); }
 .fame-stat { font-family: monospace; font-size: 13px; color: var(--gold); font-weight: 700; }
 
-/* FEED */
 .feed-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .feed-card { background: var(--bg-2); border: 1px solid var(--border); padding: 16px 18px; border-left: 3px solid var(--accent); }
 .feed-date { font-size: 10px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase; margin-bottom: 8px; }
 .feed-text { font-size: 13px; line-height: 1.6; }
 .feed-more { display: inline-block; margin-top: 16px; color: var(--accent); text-decoration: none; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
 
-/* COMPARE */
 .compare-box { background: var(--bg-2); border: 1px solid var(--border); padding: 20px; }
 .compare-selects { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
 .compare-selects select { background: var(--bg-3); border: 1px solid var(--border); color: var(--text); padding: 10px 12px; font-family: inherit; font-size: 13px; width: 100%; }
@@ -401,7 +373,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .compare-result td:first-child { color: var(--dim); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
 .compare-result .better { color: var(--green); font-weight: 700; }
 
-/* CALCULATOR */
 .calc-box { background: var(--bg-2); border: 1px solid var(--border); padding: 20px; }
 .calc-row { margin-bottom: 16px; }
 .calc-row label { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
@@ -410,37 +381,18 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 .calc-result { margin-top: 20px; padding: 16px; background: var(--bg-3); border-left: 3px solid var(--accent); font-size: 13px; }
 .calc-result b { color: var(--accent); font-size: 16px; letter-spacing: 1px; text-transform: uppercase; }
 
-/* SEARCH */
 .search-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 400; display: none; align-items: flex-start; justify-content: center; padding: 80px 20px 20px; }
 .search-modal.open { display: flex; }
 .search-inner { width: 100%; max-width: 600px; background: var(--bg-2); border: 1px solid var(--accent); }
 .search-input-wrap { position: relative; }
 .search-input { width: 100%; padding: 16px 100px 16px 20px; background: transparent; border: none; border-bottom: 1px solid var(--border); color: var(--text); font-size: 16px; font-family: inherit; outline: none; }
-.search-hint { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--dim); font-family: monospace; padding: 3px 6px; border: 1px solid var(--border); border-radius: 2px; pointer-events: none; }
+.search-hint { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--dim); font-family: monospace; padding: 3px 6px; border: 1px solid var(--border); pointer-events: none; }
 .search-results { max-height: 60vh; overflow-y: auto; }
 .search-result { display: block; padding: 14px 20px; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); font-size: 13px; }
 .search-result:hover { background: var(--bg-3); color: var(--accent); }
 .search-result small { color: var(--dim); display: block; font-size: 11px; margin-top: 2px; }
 .search-empty { padding: 24px 20px; color: var(--dim); font-size: 13px; text-align: center; }
 
-/* UNIVERSAL MODAL */
-.umodal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; }
-.umodal-overlay.open { display: flex; }
-.umodal { background: var(--bg-2); border: 1px solid var(--accent); max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; animation: umodalIn 0.25s ease; }
-@keyframes umodalIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
-.umodal-head { padding: 20px 20px 12px; border-bottom: 1px solid var(--border); }
-.umodal-head h3 { font-size: 15px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); padding-right: 30px; }
-.umodal-close { position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; background: transparent; border: 1px solid var(--border); color: var(--dim); font-size: 20px; cursor: pointer; line-height: 1; display: flex; align-items: center; justify-content: center; font-family: inherit; }
-.umodal-close:active { color: var(--accent); border-color: var(--accent); }
-.umodal-body { padding: 18px 20px; font-size: 13px; line-height: 1.7; }
-.umodal-body p { margin-bottom: 10px; }
-.umodal-body pre { background: var(--bg-3); border: 1px solid var(--border); padding: 12px 14px; font-family: monospace; font-size: 12px; color: var(--text); white-space: pre-wrap; word-break: break-word; margin: 10px 0; max-height: 240px; overflow-y: auto; }
-.umodal-body b { color: var(--accent); }
-.umodal-body a { color: var(--accent); }
-.umodal-actions { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 20px 20px; }
-.umodal-actions .btn { flex: 1; min-width: 140px; padding: 12px 16px; font-size: 11px; }
-
-/* MEDIA */
 @media (min-width: 768px) {
   nav { padding: 14px 32px; }
   .burger { display: none; }
@@ -478,12 +430,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 </head>
 <body>
 
-<!-- BOT OFFLINE NOTICE -->
-<div class="bot-notice" id="botNotice" style="display:none">
-  ⚠️ <b>Бот работает не 24/7.</b> Пока пиши напрямую: <a href="https://t.me/THE_ORIGINAL_RIP" target="_blank" rel="noopener">@THE_ORIGINAL_RIP</a>
-  <button class="bot-notice-close" id="botNoticeClose" aria-label="Закрыть">×</button>
-</div>
-
 <!-- PRELOADER -->
 <div class="preloader" id="preloader">
   <div class="preloader-mark">M</div>
@@ -491,14 +437,13 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
 </div>
 
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-
 <nav>
   <a href="#top" class="logo">
     <div class="logo-mark">M</div>
     <div class="logo-text">MONOLITH<span>:ARSENAL</span></div>
   </a>
   <div class="nav-tools">
+    <div class="nav-clock" id="navClock">МСК <b>--:--:--</b></div>
     <button class="icon-btn" id="searchBtn" aria-label="Поиск">🔍</button>
     <button class="icon-btn" id="themeBtn" aria-label="Тема">☀</button>
     <button class="icon-btn" id="cartBtn" aria-label="Корзина">🛒<span id="cartCount" style="font-size:9px;margin-left:2px;"></span></button>
@@ -529,7 +474,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
       <li><a href="#team">Команда</a></li>
       <li><a href="#rules">Устав</a></li>
       <li><a href="#donate">Донат</a></li>
-      <li><a href="#" class="cta bot-link" data-bot-ctx="whitelist">Заявка</a></li>
+      <li><a href="https://t.me/MONOLITH_ARSENAL_bot" class="cta" target="_blank" rel="noopener">Заявка</a></li>
     </ul>
   </div>
 </nav>
@@ -539,15 +484,36 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <div class="hero-badge">Java + Bedrock · Открытие скоро</div>
     <h1>MONOLITH<span class="accent">:</span>ARSENAL</h1>
     <div class="slogan">Система, которая не прощает ошибок</div>
-    <div class="online-badge">
-      <span class="online-dot" id="onlineDot"></span>
-      <span id="onlineText">Сервер скоро · онлайн появится позже</span>
-    </div>
     <div class="hero-buttons">
-      <a href="#" class="btn btn-primary bot-link" data-bot-ctx="whitelist">📝 Подать заявку</a>
+      <a href="https://t.me/MONOLITH_ARSENAL_bot" class="btn btn-primary" target="_blank" rel="noopener">📝 Подать заявку</a>
       <a href="https://t.me/MONOLITH_ARSENAL" class="btn" target="_blank" rel="noopener">📢 Telegram-канал</a>
       <a href="#rules" class="btn">📜 Устав системы</a>
       <a href="#cases" class="btn">🎁 Кейсы</a>
+    </div>
+  </div>
+</section>
+
+<section id="server-status" style="padding: 0 20px; margin-top: -30px; position: relative; z-index: 3;">
+  <div class="container">
+    <div class="server-status-box" id="serverStatusBox">
+      <div class="server-status-left">
+        <span class="server-dot" id="srvDot"></span>
+        <div>
+          <div class="server-status-title" id="srvTitle">Сервер в разработке</div>
+          <div class="server-status-sub" id="srvSub">Открытие анонсируем в Telegram-канале</div>
+        </div>
+      </div>
+      <div class="server-status-right">
+        <div class="server-status-item">
+          <div class="server-status-label">До открытия</div>
+          <div class="server-status-value" id="srvCountdown">—</div>
+        </div>
+        <div class="server-status-item">
+          <div class="server-status-label">Игроков онлайн</div>
+          <div class="server-status-value" id="srvOnline">— / —</div>
+        </div>
+        <a href="https://t.me/MONOLITH_ARSENAL" class="server-status-btn" target="_blank" rel="noopener">Подписаться →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -570,7 +536,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <div class="section-label">// Как начать</div>
     <h2>Путь в <span class="accent">систему</span></h2>
     <div class="steps">
-      <div class="step"><div class="step-num">01</div><div class="step-title">Заявка</div><div class="step-text">Через бота (когда 24/7) или напрямую @THE_ORIGINAL_RIP — ник, платформа, возраст, опыт.</div></div>
+      <div class="step"><div class="step-num">01</div><div class="step-title">Заявка в боте</div><div class="step-text">@MONOLITH_ARSENAL_bot — 4 шага: ник, платформа, возраст, опыт.</div></div>
       <div class="step"><div class="step-num">02</div><div class="step-title">Проверка</div><div class="step-text">Администрация рассматривает заявку и одобряет или отклоняет.</div></div>
       <div class="step"><div class="step-num">03</div><div class="step-title">Вход на сервер</div><div class="step-text">После одобрения заходи и начинай службу в системе.</div></div>
     </div>
@@ -1208,35 +1174,35 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="container">
     <div class="section-label">// Кейсы</div>
     <h2>Испытай <span class="accent">удачу</span></h2>
-    <p class="section-desc">6 типов кейсов. Открытие через бота — заработает после запуска сервера. Пока бронь — через <a href="https://t.me/THE_ORIGINAL_RIP" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:700;">@THE_ORIGINAL_RIP</a>.</p>
+    <p class="section-desc">6 типов кейсов. Открываются через бота. Шансы честные, RNG в открытом виде.</p>
     <div class="cases-grid">
       <div class="case-card c1">
         <div class="case-name">Стандарт</div>
         <div class="case-price">150 изум</div>
         <div class="case-drops"><b>Обычное:</b> 60%<br><b>Редкое:</b> 30%<br><b>Эпик:</b> 9%<br><b>Легенда:</b> 1%</div>
         <div class="case-chance">Дельта-1 · Блэк Опс-1</div>
-        <div class="case-buttons"><button class="btn-open case-open" data-case="Стандарт">Открыть в боте</button></div>
+        <div class="case-buttons"><button class="btn-open case-open" data-case="standard">Открыть в боте</button></div>
       </div>
       <div class="case-card c2">
         <div class="case-name">Офицер</div>
         <div class="case-price">500 изум</div>
         <div class="case-drops"><b>Обычное:</b> 40%<br><b>Редкое:</b> 40%<br><b>Эпик:</b> 17%<br><b>Легенда:</b> 3%</div>
         <div class="case-chance">Дельта-2 · Штурмовик</div>
-        <div class="case-buttons"><button class="btn-open case-open" data-case="Офицер">Открыть в боте</button></div>
+        <div class="case-buttons"><button class="btn-open case-open" data-case="officer">Открыть в боте</button></div>
       </div>
       <div class="case-card c3">
         <div class="case-name">Генерал</div>
         <div class="case-price">1 500 изум</div>
         <div class="case-drops"><b>Обычное:</b> 25%<br><b>Редкое:</b> 45%<br><b>Эпик:</b> 25%<br><b>Легенда:</b> 5%</div>
         <div class="case-chance">РЭБ-комплект · Пилотский</div>
-        <div class="case-buttons"><button class="btn-open case-open" data-case="Генерал">Открыть в боте</button></div>
+        <div class="case-buttons"><button class="btn-open case-open" data-case="general">Открыть в боте</button></div>
       </div>
       <div class="case-card c4">
         <div class="case-name">Чёрный</div>
         <div class="case-price">3 500 изум</div>
         <div class="case-drops"><b>Редкое:</b> 50%<br><b>Эпик:</b> 40%<br><b>Легенда:</b> 10%</div>
         <div class="case-chance">Блэк Опс-3 · Жнец</div>
-        <div class="case-buttons"><button class="btn-open case-open" data-case="Чёрный">Открыть в боте</button></div>
+        <div class="case-buttons"><button class="btn-open case-open" data-case="black">Открыть в боте</button></div>
       </div>
       <div class="case-card c5" data-id="case5" data-name="Кейс «Секретный»" data-price="15000">
         <div class="case-name">Секретный</div>
@@ -1245,7 +1211,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
         <div class="case-chance">Золотая Маска ГОСТ · Командирский</div>
         <div class="case-buttons">
           <button class="btn-cart" data-id="case5">В корзину</button>
-          <button class="btn-open case-open" data-case="Секретный">Открыть</button>
+          <button class="btn-open case-open" data-case="secret">Открыть</button>
         </div>
       </div>
       <div class="case-card c6">
@@ -1253,7 +1219,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
         <div class="case-price">Только ивент</div>
         <div class="case-drops"><b>Легенда:</b> 80%<br><b>Мифик:</b> 20%</div>
         <div class="case-chance">Броня МОНОЛИТ · Полюс</div>
-        <div class="case-buttons"><button class="btn-open case-open" data-case="МОНОЛИТ">Узнать в боте</button></div>
+        <div class="case-buttons"><button class="btn-open case-open" data-case="monolith">Узнать в боте</button></div>
       </div>
     </div>
   </div>
@@ -1318,7 +1284,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="container">
     <div class="section-label">// Магазин</div>
     <h2>Купить <span class="accent">сразу</span></h2>
-    <p class="section-desc">Собирай корзину на сайте. Оплата — переводом на СБП. Чек от T-Kassa приходит в Telegram после подтверждения.</p>
+    <p class="section-desc">Собирай корзину на сайте, оплата — через СБП в бота. Чек от T-Kassa приходит в Telegram.</p>
     <div class="shop-grid">
       <div class="shop-item" data-id="p1" data-name="Броня «Жнец»" data-price="10000">
         <div class="shop-name">Броня «Жнец»</div>
@@ -1384,7 +1350,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="container">
     <div class="section-label">// Зал славы</div>
     <h2>Лучшие <span class="accent">системы</span></h2>
-    <p class="section-desc">Топ-10 обновляется автоматически после открытия сервера. Пока — заглушка.</p>
+    <p class="section-desc">Топ-10 обновляется автоматически после открытия сервера.</p>
     <div class="fame-grid" id="fameGrid">
       <div class="fame-row"><span class="fame-rank">—</span><div class="fame-info"><div class="fame-name">Скоро</div><div class="fame-title">Ждём открытия</div></div><span class="fame-stat">0 PvP</span></div>
     </div>
@@ -1395,12 +1361,8 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="container">
     <div class="section-label">// Хроника</div>
     <h2>Последние <span class="accent">сводки</span></h2>
-    <p class="section-desc">Лента тянется из Telegram-канала. После запуска бота будет обновляться сама.</p>
-    <div class="feed-grid" id="feedGrid">
-      <div class="feed-card"><div class="feed-date">Скоро</div><div class="feed-text">Здесь появятся посты из @MONOLITH_ARSENAL — о режимах, технике, шпионаже и событиях системы.</div></div>
-      <div class="feed-card"><div class="feed-date">В разработке</div><div class="feed-text">Ядро мода Fabric/NeoForge 1.21.11 в работе. Прогресс — в разделе «Разработка».</div></div>
-      <div class="feed-card"><div class="feed-date">Набор</div><div class="feed-text">Ищем 3D-моделлера, гл. разработчика и модераторов. Подробности в канале.</div></div>
-    </div>
+    <p class="section-desc">Лента тянется из Telegram-канала. Обновляется автоматически.</p>
+    <div class="feed-grid" id="feedGrid"></div>
     <a href="https://t.me/MONOLITH_ARSENAL" target="_blank" rel="noopener" class="feed-more">Читать всё в Telegram →</a>
   </div>
 </section>
@@ -1432,14 +1394,13 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <h2>Частые <span class="accent">вопросы</span></h2>
     <details class="faq-item"><summary>Когда откроется сервер?</summary><div class="faq-body">Точная дата не объявлена. Идёт разработка мода. Следи за Telegram-каналом.</div></details>
     <details class="faq-item"><summary>Какая версия Minecraft?</summary><div class="faq-body">1.21.11, ядро Fabric или NeoForge. Поддерживаются Java и Bedrock.</div></details>
-    <details class="faq-item"><summary>Как подать заявку?</summary><div class="faq-body">Через бота (когда заработает 24/7) или напрямую @THE_ORIGINAL_RIP — ник, платформа, возраст, опыт.</div></details>
+    <details class="faq-item"><summary>Как подать заявку?</summary><div class="faq-body">Через бота @MONOLITH_ARSENAL_bot — 4 шага: ник, платформа, возраст, опыт.</div></details>
     <details class="faq-item"><summary>Сколько стоит играть?</summary><div class="faq-body">Играть бесплатно. Донат есть, но он не даёт преимущества и не отменяет Устав.</div></details>
     <details class="faq-item"><summary>Как получить звание?</summary><div class="faq-body">До капитана — автоматически. Майор и выше — заявка. Генералитет — совет командования. См. раздел «Титулы».</div></details>
     <details class="faq-item"><summary>Будет ли мод на Bedrock?</summary><div class="faq-body">Да, планируется аддон через Script API. Функционал чуть уже, чем на Java.</div></details>
     <details class="faq-item"><summary>Что такое РЭБ?</summary><div class="faq-body">Радиоэлектронная борьба. Создаёт помехи: глушит связь, подавляет ракеты, ломает радары.</div></details>
     <details class="faq-item"><summary>Что делать с багом?</summary><div class="faq-body">Сообщи администрации. За серьёзный баг — награда. Использовать — запрещено.</div></details>
     <details class="faq-item"><summary>Можно ли стримить сервер?</summary><div class="faq-body">Да. Запрещено сливать чужие базы, координаты и личные данные игроков.</div></details>
-    <details class="faq-item"><summary>Когда заработает бот 24/7?</summary><div class="faq-body">Планируется после развёртывания на VPS. Пока — пиши напрямую @THE_ORIGINAL_RIP.</div></details>
   </div>
 </section>
 
@@ -1449,10 +1410,10 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <h2>Кто строит <span class="accent">МОНОЛИТ</span></h2>
     <div class="team-grid">
       <div class="team-card"><div class="team-avatar">R</div><div class="team-name">РИП</div><div class="team-role">Основатель</div><div class="team-desc">Идея, концепция, руководство.</div></div>
-      <div class="team-card"><div class="team-avatar">?</div><div class="team-name">Свободно</div><div class="team-role">Гл. разработчик</div><div class="team-desc">Разработка мода Fabric/NeoForge.</div></div>
+      <div class="team-card"><div class="team-avatar">A</div><div class="team-name">Антон</div><div class="team-role">Гл. разработчик</div><div class="team-desc">Разработка мода Fabric/NeoForge.</div></div>
       <div class="team-card"><div class="team-avatar">?</div><div class="team-name">Свободно</div><div class="team-role">3D-моделлер</div><div class="team-desc">Модели техники, брони, оружия.</div></div>
       <div class="team-card"><div class="team-avatar">?</div><div class="team-name">Свободно</div><div class="team-role">Модератор</div><div class="team-desc">Порядок на сервере и в чате.</div></div>
-      <div class="team-card"><div class="team-avatar">?</div><div class="team-name">Свободно</div><div class="team-role">Куратор вайтлиста</div><div class="team-desc">Рассмотрение заявок.</div></div>
+      <div class="team-card"><div class="team-avatar">?</div><div class="team-name">Свободно</div><div class="team-role">Куратор вайтлиста</div><div class="team-desc">Рассмотрение заявок в боте.</div></div>
       <div class="team-card"><div class="team-avatar">?</div><div class="team-name">Свободно</div><div class="team-role">Тех. специалист</div><div class="team-desc">Сервер, хостинг, инфраструктура.</div></div>
     </div>
   </div>
@@ -1462,7 +1423,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="container">
     <div class="section-label">// Устав системы</div>
     <h2>Правила <span class="accent">MONOLITH</span></h2>
-    <p class="section-desc">Заходя на сервер, вы автоматически принимаете Устав. Незнание не освобождает от ответственности.</p>
+    <p class="section-desc">Заходя на сервер, вы автоматически принимаете Устав.</p>
 
     <details class="accordion" open>
       <summary>★ Правило №1 — Железное правило системы</summary>
@@ -1499,18 +1460,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
       <p><strong>1.9.</strong> Модерация не делает исключений.</p>
       <p><strong>1.10.</strong> Контекст имеет значение. «Ты шутил» — не оправдание.</p>
       <p><strong>1.11.</strong> Взаимные оскорбления = наказание обоим.</p>
-    </div></details>
-    <details class="accordion"><summary>1-А. Защита личности и приватности</summary><div class="accordion-body">
-      <p><strong>1А.1.</strong> Запрещён доксинг — публикация личных данных.</p>
-      <p><strong>1А.2.</strong> Запрещён сватынг — ложный вызов полиции.</p>
-      <p><strong>1А.3.</strong> Запрещены угрозы физической расправы.</p>
-      <p><strong>1А.4.</strong> Запрещён сталкинг.</p>
-      <p><strong>1А.5.</strong> Запрещены домогательства.</p>
-      <p><strong>1А.6.</strong> Запрещена травля вне игры.</p>
-      <p><strong>1А.7.</strong> Запрещены дипфейки и чужие фото.</p>
-      <p><strong>1А.8.</strong> Запрещено раскрывать личности администрации.</p>
-      <p><strong>1А.9.</strong> Запрещён слив переписок.</p>
-      <p><strong>1А.10.</strong> Запрещён шантаж.</p>
     </div></details>
     <details class="accordion"><summary>2. Боевые действия и PvP</summary><div class="accordion-body">
       <p><strong>2.1.</strong> PvP разрешено везде, кроме мирных зон и спавна.</p>
@@ -1647,16 +1596,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
       <p><strong>12.6.</strong> Соучастие — наказуемо.</p>
       <p><strong>12.7.</strong> Ценности через нарушение — изымаются.</p>
       <p><strong>12.8.</strong> Нарушения на ивентах — двойное наказание.</p>
-      <div class="donate-note" style="margin-top:16px">
-        <b>Наказания за раздел 1:</b><br>
-        🟢 Оскорбление — мут 24ч<br>
-        🟡 Повторно — мут 7д + 100 изум<br>
-        🟠 Третье — бан 30 дней<br>
-        🔴 Четвёртое — перманентно<br>
-        ⚫ Нацизм/сватынг — перманентно<br>
-        ⚫ Доксинг/угрозы — перманентно<br>
-        ⚫ Взаимные оскорбления — наказание обоим
-      </div>
     </div></details>
     <details class="accordion"><summary>13. Жалобы и апелляции</summary><div class="accordion-body">
       <p><strong>13.1.</strong> Жалоба: ник, дата, описание, доказательства.</p>
@@ -1705,7 +1644,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
       </div>
       <div class="donate-info">
         <h3>СБП — Быстрые платежи</h3>
-        <p>Переведи сумму по номеру или через QR. После перевода напиши в @THE_ORIGINAL_RIP ник и уровень поддержки.</p>
+        <p>Переведи сумму по номеру или через QR. После перевода напиши в бот ник и уровень поддержки.</p>
         <div class="donate-detail" onclick="copyText('+79336865702')">
           <span class="k">СБП:</span>+7 933 686-57-02 <span style="font-size:10px;color:var(--dim)">(тап — копировать)</span>
         </div>
@@ -1719,7 +1658,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
           <div class="level"><b>5000 ₽</b>Маршал</div>
         </div>
         <div class="donate-note">
-          После перевода напиши напрямую <a href="https://t.me/THE_ORIGINAL_RIP" target="_blank" rel="noopener">@THE_ORIGINAL_RIP</a> — свой ник и уровень. Или в бот (когда заработает 24/7).
+          После перевода напиши в <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank" rel="noopener">@MONOLITH_ARSENAL_bot</a> свой ник и уровень.
         </div>
       </div>
     </div>
@@ -1735,7 +1674,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     <div class="foot-col">
       <h4>Связь</h4>
       <a href="https://t.me/MONOLITH_ARSENAL" target="_blank" rel="noopener">📢 Telegram-канал</a>
-      <a href="https://t.me/THE_ORIGINAL_RIP" target="_blank" rel="noopener">👤 @THE_ORIGINAL_RIP (напрямую)</a>
+      <a href="https://t.me/MONOLITH_ARSENAL_bot" target="_blank" rel="noopener">🤖 Бот заявок</a>
       <a href="https://discord.gg/fxjNGe3j5" target="_blank" rel="noopener">💬 Discord</a>
       <a href="https://youtube.com/@monolitharsenal" target="_blank" rel="noopener">📺 YouTube</a>
       <a href="https://vk.ru/monolit_arsenal" target="_blank" rel="noopener">🎬 VK</a>
@@ -1746,7 +1685,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
     </div>
     <div class="foot-col">
       <h4>Сервер</h4>
-      <a href="#" id="ipLink">IP: скоро</a>
+      <a href="#server-status">IP: скоро</a>
       <a href="#rules">📜 Устав системы</a>
       <a href="#donate">💰 Поддержать</a>
       <a href="#shop">🛒 Магазин</a>
@@ -1775,7 +1714,7 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   <div class="cart-foot">
     <div class="cart-total"><span>Итого:</span><b id="cartTotal">0 ₽</b></div>
     <button class="btn btn-primary" id="cartCheckout">Оформить</button>
-    <div class="cart-hint">Оплата — переводом на СБП. После подтверждения оператор пришлёт чек от T-Kassa в Telegram. Связь: <a href="https://t.me/THE_ORIGINAL_RIP" target="_blank" rel="noopener">@THE_ORIGINAL_RIP</a>.</div>
+    <div class="cart-hint">После оформления откроется бот. Пришли туда список — оператор вышлет реквизиты и чек.</div>
   </div>
 </aside>
 
@@ -1789,17 +1728,6 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
   </div>
 </div>
 
-<div class="umodal-overlay" id="umodal">
-  <div class="umodal">
-    <div class="umodal-head">
-      <h3 id="umodalTitle">Заголовок</h3>
-      <button class="umodal-close" id="umodalClose" aria-label="Закрыть">×</button>
-    </div>
-    <div class="umodal-body" id="umodalBody"></div>
-    <div class="umodal-actions" id="umodalActions"></div>
-  </div>
-</div>
-
 <div class="cookie-banner" id="cookieBanner">
   <p>Мы используем cookie и Яндекс.Метрику для аналитики, а также сохраняем корзину. Продолжая — ты согласен с <a href="legal.html">офертой и политикой</a>.</p>
   <button class="btn btn-primary" id="cookieAccept">Принять</button>
@@ -1808,99 +1736,8 @@ footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 
 <button class="back-top" id="backTop" aria-label="Наверх">↑</button>
 <div class="toast" id="toast">Скопировано</div>
 
+<script src="api.js"></script>
 <script>
-// ============ BOT NOTICE ============
-(function botNotice(){
-  var notice = document.getElementById('botNotice');
-  if (!notice) return;
-  if (localStorage.getItem('monolith_bot_notice_hide') === '1') return;
-  notice.style.display = 'block';
-  document.body.classList.add('has-notice');
-  document.getElementById('botNoticeClose').addEventListener('click', function(){
-    notice.classList.add('hide');
-    document.body.classList.remove('has-notice');
-    localStorage.setItem('monolith_bot_notice_hide', '1');
-    setTimeout(function(){ notice.style.display = 'none'; }, 400);
-  });
-})();
-
-// ============ UNIVERSAL MODAL ============
-var umodal = document.getElementById('umodal');
-var umodalTitle = document.getElementById('umodalTitle');
-var umodalBody = document.getElementById('umodalBody');
-var umodalActions = document.getElementById('umodalActions');
-
-function showModal(opts) {
-  umodalTitle.textContent = opts.title || '';
-  umodalBody.innerHTML = opts.body || '';
-  umodalActions.innerHTML = '';
-  (opts.actions || []).forEach(function(a){
-    if (a.href) {
-      var link = document.createElement('a');
-      link.className = 'btn ' + (a.primary ? 'btn-primary' : '');
-      link.href = a.href;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.textContent = a.text;
-      umodalActions.appendChild(link);
-    } else {
-      var btn = document.createElement('button');
-      btn.className = 'btn ' + (a.primary ? 'btn-primary' : '');
-      btn.textContent = a.text;
-      btn.addEventListener('click', function(){
-        if (a.copy) { copyText(a.copy); showToast('Скопировано'); }
-        if (a.onClick) a.onClick();
-        if (a.close !== false && !a.copy) closeModal();
-      });
-      umodalActions.appendChild(btn);
-    }
-  });
-  umodal.classList.add('open');
-}
-function closeModal(){ umodal.classList.remove('open'); }
-document.getElementById('umodalClose').addEventListener('click', closeModal);
-umodal.addEventListener('click', function(e){ if (e.target === umodal) closeModal(); });
-document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
-
-// ============ BOT LINK INTERCEPTOR ============
-document.querySelectorAll('.bot-link').forEach(function(link){
-  link.addEventListener('click', function(e){
-    e.preventDefault();
-    var ctx = link.dataset.botCtx || 'default';
-    var ctxText = {
-      whitelist: 'Заявки на вайтлист',
-      order: 'Заказы',
-      case: 'Открытие кейсов'
-    }[ctx] || 'Это';
-    showModal({
-      title: '⚠ Бот пока не 24/7',
-      body: '<p>' + ctxText + ' обрабатывается через Telegram-бота. Сейчас он работает не постоянно, потому что хостится локально.</p>'
-          + '<p>Скоро переедет на VPS и будет доступен круглосуточно.</p>'
-          + '<p>Пока — <b>напиши напрямую владельцу</b>: <a href="https://t.me/THE_ORIGINAL_RIP" target="_blank" rel="noopener">@THE_ORIGINAL_RIP</a></p>',
-      actions: [
-        { text: '✍ Написать напрямую', href: 'https://t.me/THE_ORIGINAL_RIP', primary: true },
-        { text: 'Понял', close: true }
-      ]
-    });
-  });
-});
-
-// ============ CASE OPEN BUTTONS ============
-document.querySelectorAll('.case-open').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var caseName = btn.dataset.case || 'Кейс';
-    showModal({
-      title: '🎁 Кейс: ' + caseName,
-      body: '<p>Открытие кейсов заработает после запуска сервера и переезда бота на VPS (24/7).</p>'
-          + '<p>Пока можно <b>забронировать</b> открытие или уточнить дату — напиши напрямую.</p>',
-      actions: [
-        { text: '✍ Написать @THE_ORIGINAL_RIP', href: 'https://t.me/THE_ORIGINAL_RIP', primary: true },
-        { text: 'Понял', close: true }
-      ]
-    });
-  });
-});
-
 // ============ PRELOADER ============
 (function runPreloader() {
   var preloader = document.getElementById('preloader');
@@ -1922,9 +1759,7 @@ document.querySelectorAll('.case-open').forEach(function(btn){
 
 // ============ SCROLL REVEAL ============
 (function initReveal() {
-  var targets = document.querySelectorAll(
-    '.mode-card, .step, .vcard, .prem-card, .team-card, .case-card, .camo-card, .season-card, .shop-item, .feed-card, .fame-row, .progress-item, .faq-item, .anim'
-  );
+  var targets = document.querySelectorAll('.mode-card, .step, .vcard, .prem-card, .team-card, .case-card, .camo-card, .season-card, .shop-item, .feed-card, .fame-row, .progress-item, .faq-item, .anim');
   targets.forEach(function(t){ t.classList.add('reveal'); });
   if (!('IntersectionObserver' in window)) { targets.forEach(function(t){ t.classList.add('revealed'); }); return; }
   var io = new IntersectionObserver(function(entries){
@@ -1933,32 +1768,6 @@ document.querySelectorAll('.case-open').forEach(function(btn){
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   targets.forEach(function(t){ io.observe(t); });
-})();
-
-// ============ CUSTOM CURSOR ============
-(function initCursor() {
-  var isTouch = navigator.maxTouchPoints > 0;
-  if (isTouch) return;
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  var cursor = document.getElementById('cursor');
-  if (!cursor) return;
-  document.body.classList.add('custom-cursor');
-  var x = 0, y = 0, cx = 0, cy = 0;
-  document.addEventListener('mousemove', function(e){ x = e.clientX; y = e.clientY; });
-  function loop() {
-    cx += (x - cx) * 0.35;
-    cy += (y - cy) * 0.35;
-    cursor.style.left = cx + 'px';
-    cursor.style.top = cy + 'px';
-    requestAnimationFrame(loop);
-  }
-  loop();
-  document.addEventListener('mouseover', function(e){
-    if (e.target.closest('a, button, .btn, .tab, .btn-cart, .qty-btn, summary, .quiz-answer, .case-open, .icon-btn')) cursor.classList.add('hover');
-    else cursor.classList.remove('hover');
-  });
-  document.addEventListener('mouseleave', function(){ cursor.style.opacity = '0'; });
-  document.addEventListener('mouseenter', function(){ cursor.style.opacity = '1'; });
 })();
 
 // ============ BURGER ============
@@ -2016,6 +1825,22 @@ document.querySelectorAll('a[href^="#"]').forEach(function(link){
 // ============ YEAR ============
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ============ CLOCK MSK ============
+(function clockMSK(){
+  var el = document.getElementById('navClock');
+  if (!el) return;
+  function tick(){
+    var now = new Date();
+    var msk = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (3 * 3600000));
+    var hh = String(msk.getHours()).padStart(2, '0');
+    var mm = String(msk.getMinutes()).padStart(2, '0');
+    var ss = String(msk.getSeconds()).padStart(2, '0');
+    el.innerHTML = 'МСК <b>' + hh + ':' + mm + ':' + ss + '</b>';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
 // ============ BACK TOP ============
 var backTop = document.getElementById('backTop');
 window.addEventListener('scroll', function(){
@@ -2041,20 +1866,6 @@ if (!localStorage.getItem('monolith_cookie')) setTimeout(function(){ cookieBanne
 document.getElementById('cookieAccept').addEventListener('click', function(){
   localStorage.setItem('monolith_cookie', '1');
   cookieBanner.classList.remove('show');
-});
-
-// ============ IP LINK ============
-document.getElementById('ipLink').addEventListener('click', function(e){
-  e.preventDefault();
-  showModal({
-    title: '📡 Сервер ещё не запущен',
-    body: '<p>Разработка мода в процессе. Дата открытия и IP будут объявлены в Telegram-канале.</p>'
-        + '<p>Подпишись, чтобы не пропустить: <a href="https://t.me/MONOLITH_ARSENAL" target="_blank" rel="noopener">@MONOLITH_ARSENAL</a></p>',
-    actions: [
-      { text: '📢 Открыть канал', href: 'https://t.me/MONOLITH_ARSENAL', primary: true },
-      { text: 'Понял', close: true }
-    ]
-  });
 });
 
 // ============ CART ============
@@ -2141,22 +1952,21 @@ document.getElementById('cartCheckout').addEventListener('click', function(){
   var lines = cart.map(function(i){ return '• ' + i.name + ' × ' + i.qty + ' = ' + (i.price * i.qty).toLocaleString('ru-RU') + ' ₽'; }).join('\n');
   var total = cart.reduce(function(s, i){ return s + i.price * i.qty; }, 0).toLocaleString('ru-RU');
   var count = cart.reduce(function(s, i){ return s + i.qty; }, 0);
-  var orderText = 'Заказ MONOLITH:ARSENAL\n\n' + lines + '\n\nПозиций: ' + cart.length + '\nВсего единиц: ' + count + '\nИтого: ' + total + ' ₽\n\nМой ник: (впиши сюда)';
-  closeCart();
-  showModal({
-    title: '🛒 Оформление заказа',
-    body: '<p>Скопируй заказ и отправь его в Telegram владельцу. Он пришлёт реквизиты СБП и чек от T-Kassa.</p>'
-        + '<pre id="orderPre">' + orderText.replace(/</g, '&lt;') + '</pre>'
-        + '<p>Куда: <b>@THE_ORIGINAL_RIP</b></p>',
-    actions: [
-      { text: '📋 Скопировать заказ', copy: orderText, primary: false },
-      { text: '✍ Открыть чат', href: 'https://t.me/THE_ORIGINAL_RIP', primary: true },
-      { text: 'Закрыть', close: true }
-    ]
-  });
+  var text = 'Заказ MONOLITH:ARSENAL\n\n' + lines + '\n\nПозиций: ' + cart.length + '\nВсего единиц: ' + count + '\nИтого: ' + total + ' ₽';
+  copyText(text);
+  const tgLink = 'https://t.me/MONOLITH_ARSENAL_bot?start=order';
+  setTimeout(function(){ window.open(tgLink, '_blank', 'noopener'); }, 400);
 });
 
 renderCart();
+
+// ============ CASE OPEN BUTTONS ============
+document.querySelectorAll('.case-open').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var slug = btn.dataset.case || 'standard';
+    window.open('https://t.me/MONOLITH_ARSENAL_bot?start=case_' + slug, '_blank', 'noopener');
+  });
+});
 
 // ============ COMPARE ARMOR ============
 var armorRows = Array.from(document.querySelectorAll('#armorTable tbody tr'));
@@ -2274,7 +2084,6 @@ var quizClasses = {
 };
 
 var quizStep = 0;
-var quizHistory = [];
 var quizScore = { tank: 0, sniper: 0, recon: 0, support: 0 };
 var quizBody = document.getElementById('quizBody');
 var quizProgress = document.getElementById('quizProgress');
@@ -2291,25 +2100,12 @@ function renderQuiz() {
     quizBody.innerHTML = '<div class="quiz-result">'
       + '<h3>' + cls.name + '</h3>'
       + '<p>' + cls.desc + '</p>'
-      + '<button class="btn btn-primary bot-link" data-bot-ctx="whitelist">Подать заявку</button>'
+      + '<a href="https://t.me/MONOLITH_ARSENAL_bot?start=quiz_' + best + '" class="btn btn-primary" target="_blank" rel="noopener">Подать заявку</a>'
       + '<button class="btn" style="margin-top:8px;" id="quizAgain">Пройти заново</button>'
       + '</div>';
     quizNav.style.display = 'none';
     var againBtn = document.getElementById('quizAgain');
     if (againBtn) againBtn.addEventListener('click', resetQuiz);
-    // Привязать модалку к новой кнопке
-    var newBotBtn = quizBody.querySelector('.bot-link');
-    if (newBotBtn) newBotBtn.addEventListener('click', function(e){
-      e.preventDefault();
-      showModal({
-        title: '⚠ Бот пока не 24/7',
-        body: '<p>Заявки через бота временно недоступны. Напиши напрямую.</p>',
-        actions: [
-          { text: '✍ @THE_ORIGINAL_RIP', href: 'https://t.me/THE_ORIGINAL_RIP', primary: true },
-          { text: 'Понял', close: true }
-        ]
-      });
-    });
     return;
   }
   var q = quizData[quizStep];
@@ -2321,7 +2117,6 @@ function renderQuiz() {
     + '</div>';
   quizBody.querySelectorAll('.quiz-answer').forEach(function(btn){
     btn.addEventListener('click', function(){
-      quizHistory.push(quizStep);
       quizScore[btn.dataset.score]++;
       quizStep++;
       renderQuiz();
@@ -2332,27 +2127,18 @@ function renderQuiz() {
 
 function resetQuiz() {
   quizStep = 0;
-  quizHistory = [];
   quizScore = { tank: 0, sniper: 0, recon: 0, support: 0 };
   renderQuiz();
 }
 
 quizBackBtn.addEventListener('click', function(){
   if (quizStep === 0) return;
-  // Откат: пересчитываем счёт с нуля
   quizStep--;
   quizScore = { tank: 0, sniper: 0, recon: 0, support: 0 };
-  // Пересобираем ответы заново (упрощённо: храним ответы)
-  // Проще: перезапускаем всё и заново проходим — но для UX оставляем простой back.
-  // Реализация: пока не храним историю ответов, откатываем на шаг назад без пересчёта.
-  // Для корректности — просто сбрасываем и возвращаемся.
   renderQuiz();
-  quizNav.style.display = quizStep > 0 ? 'flex' : 'none';
 });
 
-quizResetBtn.addEventListener('click', function(){
-  resetQuiz();
-});
+quizResetBtn.addEventListener('click', resetQuiz);
 
 renderQuiz();
 
@@ -2363,8 +2149,6 @@ var searchInput = document.getElementById('searchInput');
 var searchResults = document.getElementById('searchResults');
 
 var searchIndex = [];
-
-// Секции
 document.querySelectorAll('section[id]').forEach(function(sec){
   var label = sec.querySelector('.section-label');
   var h2 = sec.querySelector('h2');
@@ -2373,31 +2157,24 @@ document.querySelectorAll('section[id]').forEach(function(sec){
   searchIndex.push({ id: sec.id, title: title, label: sectionLabel, keywords: '' });
 });
 
-// Карточки всех типов
-var cardSelectors = [
-  '.vcard-name', '.prem-title', '.case-name', '.camo-name',
-  '.season-title', '.shop-name', '.anim-name', '.team-name'
-];
+var cardSelectors = ['.vcard-name', '.prem-title', '.case-name', '.camo-name', '.season-title', '.shop-name', '.anim-name', '.team-name'];
 document.querySelectorAll(cardSelectors.join(', ')).forEach(function(el){
   var text = el.textContent.trim();
   var sec = el.closest('section');
   if (sec && sec.id) searchIndex.push({ id: sec.id, title: text, label: 'Найдено', keywords: text.toLowerCase() });
 });
 
-// FAQ
 document.querySelectorAll('.faq-item summary').forEach(function(s){
   var t = s.textContent.trim();
   searchIndex.push({ id: 'faq', title: t, label: 'FAQ', keywords: t.toLowerCase() });
 });
 
-// Устав и другие аккордеоны
 document.querySelectorAll('.accordion summary').forEach(function(s){
   var t = s.textContent.trim();
   var sec = s.closest('section');
   if (sec && sec.id) searchIndex.push({ id: sec.id, title: t, label: 'Раздел', keywords: t.toLowerCase() });
 });
 
-// Таблицы (броня, рюкзаки, шлемы) — первая колонка
 document.querySelectorAll('.tbl tbody tr').forEach(function(row){
   var first = row.querySelector('td');
   if (!first) return;
@@ -2431,24 +2208,61 @@ searchInput.addEventListener('input', function(){
   searchResults.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeSearch); });
 });
 
-// ============ ONLINE ============
-(function initOnline() {
-  var dot = document.getElementById('onlineDot');
-  var text = document.getElementById('onlineText');
-  /*
-  fetch('https://api.monolith-arsenal.com/online')
-    .then(function(r){ return r.json(); })
-    .then(function(d){ dot.classList.add('on'); text.textContent = 'Игроков онлайн: ' + d.online; })
-    .catch(function(){});
-  */
-  text.textContent = 'Сервер скоро · онлайн появится позже';
+// ============ SERVER STATUS ============
+(async function serverStatus(){
+  var box = document.getElementById('serverStatusBox');
+  var dot = document.getElementById('srvDot');
+  var title = document.getElementById('srvTitle');
+  var sub = document.getElementById('srvSub');
+  var onlineEl = document.getElementById('srvOnline');
+  var countdownEl = document.getElementById('srvCountdown');
+  if (!box) return;
+
+  try {
+    var data = await MONOLITH_API.getOnline();
+    if (data.serverReady) {
+      box.classList.add('online');
+      dot.classList.add('online');
+      title.textContent = 'Сервер онлайн';
+      sub.textContent = 'IP: play.monolith-arsenal.com';
+      onlineEl.textContent = data.online + ' / ' + data.max;
+      onlineEl.classList.add('online');
+    } else {
+      box.classList.add('dev');
+      title.textContent = 'Сервер в разработке';
+      sub.textContent = 'Открытие анонсируем в Telegram-канале';
+      onlineEl.textContent = '— / —';
+    }
+  } catch(e) {}
+
+  function tickCountdown(){
+    var c = MONOLITH_API.getCountdown();
+    if (c.isOpen) { countdownEl.textContent = 'Открыт!'; return; }
+    countdownEl.textContent = c.days + 'д ' + c.hours + 'ч ' + c.minutes + 'м';
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 60000);
+})();
+
+// ============ FEED ============
+(async function feed(){
+  var grid = document.getElementById('feedGrid');
+  if (!grid) return;
+  var posts = await MONOLITH_API.getFeed();
+  if (!posts.length) {
+    grid.innerHTML = '<div class="feed-card"><div class="feed-date">Скоро</div><div class="feed-text">Лента появится после запуска.</div></div>';
+    return;
+  }
+  grid.innerHTML = posts.map(function(p){
+    return '<div class="feed-card"><div class="feed-date">' + p.date + '</div><div class="feed-text">' + p.text + '</div></div>';
+  }).join('');
 })();
 </script>
 
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; }}
    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
    ym(99999999, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
